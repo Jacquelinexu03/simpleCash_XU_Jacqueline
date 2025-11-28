@@ -23,9 +23,11 @@ public class ClientServiceImpl implements ClientService {
     @PostConstruct
     private void initdb() {
         repository.saveAll(List.of(
-                new Client("A", "test", "", "75000", "", "0987654321"),
-                new Client("B", "test", "", "75000", "", "0987654321"),
-                new Client("C", "test", "", "75000", "", "0987654321")
+            new Client("A", "test", "", "75000", "", "0987654321"),
+            new Client("B", "test", "", "75000", "", "0987654321"),
+            new Client("C", "test", "", "75000", "", "0987654321"),
+            new Client("D", "ok", "", "75001", "", "0983454321"),
+            new Client("E", "ok", "", "75002", "", "0987004321")
         ));
     }
 

@@ -6,9 +6,9 @@ import org.example.entity.Client;
 import java.util.List;
 
 public record AdvisorUpdateDto(
-        @NotBlank(message = "FisrtName cannot be empty")
+        @NotBlank(message = "FirstName cannot be empty")
         String firstName,
-        @NotBlank(message = "FisrtName cannot be empty")
+        @NotBlank(message = "LastName cannot be empty")
         String lastName,
         List<Client> clients) {
 }
