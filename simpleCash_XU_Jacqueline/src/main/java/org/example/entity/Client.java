@@ -3,7 +3,6 @@ package org.example.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -39,6 +38,10 @@ public class Client {
     @OneToMany(mappedBy = "client", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = false)
     @JsonIgnore
     private List<Account> accounts = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "advisor")
+    private Advisor advisor;
 
     public Client(String lastName, String firstName, String address, String postalCode, String city, String phone) {
         this.lastName = lastName;
