@@ -21,17 +21,6 @@ public class AccountServiceImpl implements AccountService {
     private final AccountRepository repository;
     private final AccountMapper accountMapper;
 
-    /*
-    @PostConstruct
-    private void initdb() {
-        repository.saveAll(List.of(
-                new Account(),
-                new Account(),
-                new Account()
-        ));
-    }
-    */
-
     @Override
     public List<AccountDto> findAll() {
         return repository.findAll().stream().map(accountMapper::toDto).toList();
