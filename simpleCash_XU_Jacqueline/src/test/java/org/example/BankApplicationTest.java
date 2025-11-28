@@ -1,10 +1,10 @@
-package org.formation;
+package org.example;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CoffeemachineApplicationTests {
+class BankApplicationTest {
 
     @Test
     void contextLoads() {

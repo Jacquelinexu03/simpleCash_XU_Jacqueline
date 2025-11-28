@@ -56,7 +56,12 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void deleteClient(Long id) {
-        repository.deleteById(id);
+    public boolean deleteClient(Long id) {
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 }

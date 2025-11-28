@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/client")
 @RequiredArgsConstructor
 public class ClientController {
-    private final ClientService clientService;
+    public final ClientService clientService;
 
     @GetMapping
     List<ClientDto> getClients() {
@@ -38,4 +38,13 @@ public class ClientController {
     ResponseEntity<ClientDto> updateClient(@PathVariable Long id, @RequestBody @Valid ClientUpdateDto dto) {
         return clientService.update(id, dto).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
+
+    @DeleteMapping("{id}")
+    ResponseEntity<ClientDto> deleteClient(@PathVariable Long id) {
+        boolean deleted = clientService.deleteClient(id);
+        if (deleted) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }    }
 }

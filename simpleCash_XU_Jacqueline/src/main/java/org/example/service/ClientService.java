@@ -12,5 +12,5 @@ public interface ClientService {
     ClientDto save(ClientCreateDto dto);
     Optional<ClientDto> findById(Long id);
     Optional<ClientDto> update(Long id, ClientUpdateDto dto);
-    void deleteClient(Long id);
+    boolean deleteClient(Long id);
 }

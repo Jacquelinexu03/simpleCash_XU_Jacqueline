@@ -1,10 +1,14 @@
 package org.example.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Data
@@ -32,6 +36,10 @@ public class Client {
     @Pattern(regexp = "\\d{10}", message = "Phone number must be 10 digits")
     private String phoneNumber;
 
+    @OneToMany(mappedBy = "client", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = false)
+    @JsonIgnore
+    private List<Account> accounts = new ArrayList<>();
+
     public Client(String lastName, String firstName, String address, String postalCode, String city, String phone) {
         this.lastName = lastName;
         this.firstName = firstName;
@@ -39,6 +47,9 @@ public class Client {
         this.postalCode = postalCode;
         this.city = city;
         this.phoneNumber = phone;
+
+        this.accounts.add(new Account(this, true));
+        this.accounts.add(new Account(this, false));
     }
 
     public void updateFirstName(String name) {
